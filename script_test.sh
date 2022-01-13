@@ -1,0 +1,1 @@
+gcc -o test test.c fdf_utils.c fdf_utils2.c lib/libft.a lib/libmlx.a
