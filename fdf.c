@@ -22,6 +22,7 @@ int	fdf(t_list **map, int lg)
 	int		x;
 	int		y;
 	char	*pixel;
+	int		centre[2];
 
 	x = 0;
 	y = 0;
@@ -29,6 +30,8 @@ int	fdf(t_list **map, int lg)
 	hauteur = compteur_ligne(*map);
 	ft_putchar_fd(' ', 1);
 	ft_putnbr_fd(hauteur, 1);
+	centre[0] = lg * 5 + 50;
+	centre[1] = hauteur * 5 + 50;
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, lg * 10 + 100, hauteur * 10 + 100, "fdf");
 	while (*map)
@@ -42,7 +45,7 @@ int	fdf(t_list **map, int lg)
 			ft_putstr_fd(" color : ", 1);
 			ft_putnbr_fd(pix_c, 1);
 			ft_putchar_fd(' ', 1);*/
-			mlx_pixel_put(mlx_ptr, win_ptr, 50 + x * 10, 50 + (y * 10) - pix_h, pix_c);
+			mlx_pixel_put(mlx_ptr, win_ptr, cos(1) * (50 + x * 10), sin(1) * 50 + (y * 10) - pix_h, pix_c);
 			pixel = next_pixel(pixel);
 			x++;
 		}
