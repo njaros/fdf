@@ -1,1 +1,1 @@
-gcc -o test test.c fdf_utils.c fdf_utils2.c lib/libft.a lib/libmlx.a
+gcc -o test -D BUFFER_SIZE=50 test.c fill_lst.c get_next_line.c get_next_line_utils.c fdf_utils.c fdf_utils2.c lib/libft.a lib/libmlx.a

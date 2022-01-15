@@ -31,19 +31,23 @@ int	fdf(t_list **map, int lg)
 	ft_putnbr_fd(hauteur, 1);
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, lg * 10 + 100, hauteur * 10 + 100, "fdf");
-	while (y <= hauteur)
+	while (*map)
 	{
-		while (x <= lg)
+		pixel = (*map)->content;
+		while (pixel)
 		{
-			if (!pixel)
-				pixel = (*map)->content;
-			else
-				pixel = next_pixel(pixel);
 			pix_h = ft_atoi(pixel);
 			pix_c = color_search(pixel);
+			/*ft_putnbr_fd(pix_h, 1);
+			ft_putstr_fd(" color : ", 1);
+			ft_putnbr_fd(pix_c, 1);
+			ft_putchar_fd(' ', 1);*/
 			mlx_pixel_put(mlx_ptr, win_ptr, 50 + x * 10, 50 + (y * 10) - pix_h, pix_c);
+			pixel = next_pixel(pixel);
 			x++;
 		}
+		x = 0;
+		//ft_putchar_fd('\n', 1);
 		next_line(map);
 		y++;
 	}

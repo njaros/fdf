@@ -26,14 +26,14 @@ char	*next_pixel(char *line)
 	int	i;
 
 	i = 0;
-	if (!line[i] || line[i] == '\n')
-		return (NULL);
+	while (line[i] == ' ')
+		i++;
+	while (line[i] && line[i] != ' ' && line[i] != '\n')
+		i++;
 	while (line[i] == ' ')
 		i++;
 	if (!line[i] || line[i] == '\n')
 		return (NULL);
-	while (line[i] != ' ')
-		i++;
 	return (&line[i]);
 }
 
@@ -46,12 +46,12 @@ int	hexa_to_int(char *str)
 	nb = 0;
 	j = 0;
 	i = 0;
-	while (str[i + 1] != ' ' || str[i + 1] != '\n' || !str[i + 1])
+	while (str[i] && str[i] != ' ' && str[i] != '\n')
 	{
-		ft_tolower((int)str[i]);
+		str[i] = ft_tolower((int)str[i]);
 		i++;
 	}
-	while (str[i] != 'x')
+	while (str[--i] != 'x')
 	{
 		nb += calcul_poids(str[i], "0123456789abcdef", j);
 		j++;
@@ -66,15 +66,14 @@ int	color_search(char *pixel)
 	i = 0;
 	while (pixel[i] == ' ')
 		i++;
+	if (pixel[i] == '-' || pixel[i] == '+')
+		i++;
 	while (ft_isdigit((int)pixel[i]))
 		i++;
 	if (pixel[i] == ' ' || pixel[i] == '\n' || pixel[i] == 0)
 		return (0xffffff);
 	else
-	{
-		ft_putendl_fd(&pixel[i + 3], 1);
 		return (hexa_to_int(&pixel[i + 3]));
-	}
 }
 
 int	compteur_ligne(t_list *lst)
