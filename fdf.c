@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:30:36 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/13 19:24:46 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/17 10:43:06 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	fdf(t_list **map, int lg)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_list	*first;
 	int		hauteur;
 	int		pix_h;
 	int		pix_c;
@@ -34,6 +35,7 @@ int	fdf(t_list **map, int lg)
 	centre[1] = hauteur * 5 + 50;
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, lg * 10 + 100, hauteur * 10 + 100, "fdf");
+	first = *map;
 	while (*map)
 	{
 		pixel = (*map)->content;
@@ -45,13 +47,13 @@ int	fdf(t_list **map, int lg)
 			ft_putstr_fd(" color : ", 1);
 			ft_putnbr_fd(pix_c, 1);
 			ft_putchar_fd(' ', 1);*/
-			mlx_pixel_put(mlx_ptr, win_ptr, cos(1) * (50 + x * 10), sin(1) * 50 + (y * 10) - pix_h, pix_c);
+			mlx_pixel_put(mlx_ptr, win_ptr, (50 + x * 10), 50 + (y * 10) - pix_h, pix_c);
 			pixel = next_pixel(pixel);
 			x++;
 		}
 		x = 0;
 		//ft_putchar_fd('\n', 1);
-		next_line(map);
+		*map = (*map)->next;
 		y++;
 	}
 	mlx_loop(mlx_ptr);

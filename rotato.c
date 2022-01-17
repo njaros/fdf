@@ -1,40 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_utils2.c                                       :+:      :+:    :+:   */
+/*   rotato.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 19:17:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/17 16:55:17 by njaros           ###   ########lyon.fr   */
+/*   Created: 2022/01/17 10:18:48 by njaros            #+#    #+#             */
+/*   Updated: 2022/01/17 11:04:58 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
-
-int	calcul_poids(char c, char *base, int exp)
-{
-	int poids;
-	int	i;
-
-	i = 0;
-	poids = 1;
-	if (exp != 0)
-	{
-		while (exp != 0)
-		{
-			poids *= 16;
-			exp--;
-		}
-	}
-	while (c != base[i])
-		i++;
-	return (i * poids);
-}
-
-void	freeteuse(t_point **tab, int end)
-{
-	while (--end >= 0)
-		free(tab[end]);
-	free(tab);
-}

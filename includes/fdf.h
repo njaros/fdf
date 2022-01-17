@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:38:04 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/13 19:37:07 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/17 16:56:29 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	int		x;
+	int		y;
+	int		z;
+	int		color;
+	double	angle2D;  //angle sur le plan xy entre le point et le centre de la fenêtre
+	double	angle3DX; //angle entre axe x et z par rapport au point de vue
+	double	angle3DY; //angle entre axe y et z par rapport au point de vue
 }	t_point;
 
 // Parsing et sauvegarde des points
@@ -60,6 +63,11 @@ int		hexa_to_int(char *str);
 char	*next_pixel(char *line);
 void	next_line(t_list **lst);
 int		calcul_poids(char c, char *base, int exp);
+t_point	**tab_build(t_list **map, int lg, int hauteur);
+
+// Outils pratiques
+
+void	freeteuse(t_point **tab, int end);
 
 //A supprimer avant rendu
 

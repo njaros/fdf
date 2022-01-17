@@ -16,7 +16,9 @@ SRCS_TEST =	fdf.c \
 			parsing_map.c \
 			parsing_utils.c \
 			fdf_utils.c \
+			fdf_utils2.c \
 			ft_display.c \
+			tab_build.c \
 			test.c
 OBJS = ${SRCS:.c=.o}
 OBJS_TEST =	${SRCS_TEST:.c=.o}
