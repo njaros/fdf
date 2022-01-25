@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:38:04 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 15:32:01 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 17:09:04 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,11 @@ int				calcul_poids(char c, char *base, int exp);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			remplir_image(t_data *data, t_point **tab, int lg, int ht);
 t_point			**tab_build(t_list **map, int lg, int hauteur);
-void			projette_au_plan(t_point_plan h, t_point a);
+void			projette_au_plan(t_point_plan *h, t_point a);
 t_point_plan	*fill_plan(t_point *line, int lg);
 t_point_plan	**plan_build(t_point **tab, int lg, int ht);
+void			traiteur(t_point_plan **p, t_point_plan c, t_data *data);
+void			trace_trait(t_point_plan xyc1, int x2, int y2, t_data *data);
 
 // Outils de transformations
 

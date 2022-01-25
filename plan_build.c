@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 14:00:47 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 15:09:39 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 15:42:48 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_point_plan	*fill_plan(t_point *line, int lg)
 		i++;
 	}
 	pouet[i].exist = 0;
+	return (pouet);
 }
 
 t_point_plan	**plan_build(t_point **tab, int lg, int ht)
@@ -52,4 +53,5 @@ t_point_plan	**plan_build(t_point **tab, int lg, int ht)
 		i++;
 	}
 	plan[i] = NULL;
+	return (plan);
 }

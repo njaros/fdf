@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:17:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 15:22:08 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 17:05:34 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,23 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	remplir_image(t_data *data, t_point **tab, int lg, int ht)
 {
-	int	x;
-	int	y;
+	t_point_plan	**plan;
+	int				x;
+	int				y;
+	t_point_plan	magouille_norminage;
 
+	plan = plan_build(tab, lg, ht);
 	x = 0;
 	y = 0;
-	while (tab[y])
+	while (plan[y])
 	{
-		while (tab[y][x].exist == 1)
+		while (plan[y][x].exist == 1)
 		{
-			my_mlx_pixel_put(data, 50 + (lg / 2 + tab[y][x].x) * 10, 50 + (ht / 2 + tab[y][x].y) * 10, tab[y][x].color);
+			magouille_norminage.x = x;
+			magouille_norminage.y = y;
+			magouille_norminage.exist = tab[y][x].color;
+			my_mlx_pixel_put(data, 50 + (lg / 2 + plan[y][x].x) * 10, 50 + (ht / 2 + plan[y][x].y) * 10, tab[y][x].color);
+			traiteur(plan, magouille_norminage, data);
 			x++;
 		}
 		x = 0;
