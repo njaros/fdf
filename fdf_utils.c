@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:13:19 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/13 19:45:48 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 10:22:46 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	color_search(char *pixel)
 	while (ft_isdigit((int)pixel[i]))
 		i++;
 	if (pixel[i] == ' ' || pixel[i] == '\n' || pixel[i] == 0)
-		return (0xffffff);
+		return (0xfd6c9e);
 	else
 		return (hexa_to_int(&pixel[i + 3]));
 }

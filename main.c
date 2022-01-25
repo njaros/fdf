@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:03:38 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/13 17:44:16 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 10:26:14 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	puterror(int error)
 int	main(int ac, char **av)
 {
 	int		fd;
-	int		err_parsing;
+	int		linesize_or_error;
 	t_list	*map;
 
 	if (ac < 2)
@@ -30,15 +30,14 @@ int	main(int ac, char **av)
 	if (fd == -1)
 		return (puterror(9));
 	map = fill_lst(fd);
-	//ft_display(map);
 	if (!map)
 		return (puterror(11));
-	err_parsing = parsing_map(map);
-	if (err_parsing > 0)
+	linesize_or_error = parsing_map(map);
+	if (linesize_or_error > 0)
 	{
 		ft_lstclear(&map, free);
-		return (puterror(err_parsing));
+		return (puterror(linesize_or_error));
 	}
 	ft_putendl_fd("map OK", 1);
-	return (fdf(&map, -err_parsing));
+	return (fdf(&map, -linesize_or_error));
 }

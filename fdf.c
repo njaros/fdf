@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:30:36 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/19 16:52:42 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/25 11:27:52 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,19 @@
 int	fdf(t_list **map, int lg)
 {
 	void	*mlx_ptr;
+	t_data	img;
+	int		nbr_line;
 	void	*win_ptr;
-	int		ymax;
 	t_point	**tab;
-	int		x;
-	int		y;
 
-	x = 0;
-	y = 0;
-	ymax = compteur_ligne(*map);
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, lg * 10 + 100, ymax * 10 + 100, "fdf");
-	tab = tab_build(map, lg, ymax);
-	while (tab[y])
-	{
-		while (tab[y][x].exist)
-		{
-			mlx_pixel_put(mlx_ptr, win_ptr, 50 + (lg / 2 + tab[y][x].x) * 10, 50 + (ymax / 2 + tab[y][x].y) * 10, tab[y][x].color);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	nbr_line = compteur_ligne(*map);
+	img.img = mlx_new_image(mlx_ptr, lg * 10 + 100, nbr_line * 10 + 100);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
+	win_ptr = mlx_new_window(mlx_ptr, lg * 10 + 100, nbr_line * 10 + 100, "fdf V2");
+	tab = tab_build(map, lg, nbr_line);
+	remplir_image(&img, tab, lg, nbr_line);
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
 	mlx_loop(mlx_ptr);
-	ft_lstclear(map, free);
 	return (0);
 }
