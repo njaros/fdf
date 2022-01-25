@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:17:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/17 16:55:17 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/01/19 11:33:03 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	calcul_poids(char c, char *base, int exp)
 	return (i * poids);
 }
 
-void	freeteuse(t_point **tab, int end)
+t_point	**freeteuse(t_point **tab, int end)
 {
 	while (--end >= 0)
 		free(tab[end]);
 	free(tab);
+	return (NULL);
 }

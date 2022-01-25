@@ -8,8 +8,11 @@ SRCS =	fdf.c \
 		parsing_utils.c \
 		fdf_utils.c \
 		fdf_utils2.c \
+		tab_build.c \
+		rotato.c \
 		ft_display.c
 SRCS_TEST =	fdf.c \
+			rotato.c \
 			fill_lst.c \
 			get_next_line_utils.c \
 			get_next_line.c \

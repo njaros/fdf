@@ -8,13 +8,13 @@ int	puterror(int error)
 
 int	main (int ac, char **av)
 {
-	int	fd;
+	int		fd;
 	t_list	*map;
 	char	*pixel;
-	int	xmax;
-	int ymax;
-	int x = -1;
-	int y = -1;
+	int		xmax;
+	int 	ymax;
+	int 	x = -1;
+	int 	y = -1;
 	t_point	**tab;
 
 	(void) ac;
@@ -36,14 +36,7 @@ int	main (int ac, char **av)
 		ft_putnbr_fd(y, 1);
 		ft_putchar_fd('\n', 1);
 		while (++x < xmax)
-		{
-			ft_putstr_fd("x : ", 1);
-			ft_putnbr_fd(tab[y][x].x, 1);
-			ft_putstr_fd("  et y : ", 1);
-			ft_putnbr_fd(tab[y][x].y, 1);
-			ft_putstr_fd("  |  ", 1);
-			printf(" angle xOy : %f", tab[y][x].angle2D);
-		}
+			printf("pour x = %d et y = %d, distXY : %f | distXZ : %f | distYZ : %f | angle xOy : %f \n",tab[y][x].x, tab[y][x].y, tab[y][x].dist_centreXY, tab[y][x].dist_centreXZ, tab[y][x].dist_centreYZ, tab[y][x].angle2D);
 		x = -1;
 		ft_putchar_fd('\n', 1);
 	}
