@@ -8,6 +8,7 @@ SRCS =	fdf.c \
 		parsing_utils.c \
 		fdf_utils.c \
 		fdf_utils2.c \
+		fdf_utils3.c \
 		tab_build.c \
 		rotato.c \
 		plan_build.c \
@@ -24,6 +25,7 @@ SRCS_TEST =	fdf.c \
 			parsing_utils.c \
 			fdf_utils.c \
 			fdf_utils2.c \
+			fdf_utils3.c \
 			ft_display.c \
 			tab_build.c \
 			test.c
@@ -33,7 +35,7 @@ HEADERS = includes/fdf.h includes/libft.h includes/mlx.h includes/get_next_line.
 LIB = lib/libmlx.a lib/libft.a
 RM = rm -f
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=30
+CFLAGS = -D BUFFER_SIZE=30
 
 %.o: %.c ${HEADERS}
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:17:48 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 17:05:34 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/02/01 13:18:54 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	remplir_image(t_data *data, t_point **tab, int lg, int ht)
 			magouille_norminage.x = x;
 			magouille_norminage.y = y;
 			magouille_norminage.exist = tab[y][x].color;
-			my_mlx_pixel_put(data, 50 + (lg / 2 + plan[y][x].x) * 10, 50 + (ht / 2 + plan[y][x].y) * 10, tab[y][x].color);
+			my_mlx_pixel_put(data, plan[y][x].x, plan[y][x].y, tab[y][x].color);
 			traiteur(plan, magouille_norminage, data);
 			x++;
 		}

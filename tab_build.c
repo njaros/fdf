@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:05:36 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 11:52:14 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/02/01 13:33:42 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_point	*fill_tab(char *pixel, int lg, int y, int hauteur)
 	{
 		pouet[i].x = i - lg / 2;
 		pouet[i].y = y - hauteur / 2;
-		pouet[i].z = ft_atoi(pixel);
+		pouet[i].z = 0;
 		pouet[i].color = color_search(pixel);
 		pouet[i].dist_centreXY = gemme_distance(pouet[i].x, pouet[i].y);
-		pouet[i].dist_centreXZ = gemme_distance(pouet[i].x, pouet[i].z);
-		pouet[i].dist_centreYZ = gemme_distance(pouet[i].y, pouet[i].z);
+		pouet[i].dist_centreXZ = gemme_distance(pouet[i].x, ft_atoi(pixel));
+		pouet[i].dist_centreYZ = gemme_distance(pouet[i].y, ft_atoi(pixel));
 		pouet[i].angle2D = gemme_angle(pouet[i].x, pouet[i].y, pouet[i].dist_centreXY);
 		pouet[i].angle3DX = M_PI / 2;
 		pouet[i].angle3DY = 0;

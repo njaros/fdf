@@ -6,7 +6,7 @@
 /*   By: njaros <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:38:04 by njaros            #+#    #+#             */
-/*   Updated: 2022/01/25 17:09:04 by njaros           ###   ########lyon.fr   */
+/*   Updated: 2022/02/01 15:45:39 by njaros           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ typedef struct s_point
 	int		exist;
 }	t_point;
 
+typedef struct s_vars
+{
+	t_point	**tab;
+	double	angle;
+	t_data	*data;
+	int		lg;
+	int		ht;
+	void	*mlx;
+	void	*win;
+	void	*img;
+}	t_vars;
+
 // Parsing et sauvegarde des points
 
 int				contain(char c, char *str);
@@ -86,8 +98,8 @@ int				calcul_poids(char c, char *base, int exp);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			remplir_image(t_data *data, t_point **tab, int lg, int ht);
 t_point			**tab_build(t_list **map, int lg, int hauteur);
-void			projette_au_plan(t_point_plan *h, t_point a);
-t_point_plan	*fill_plan(t_point *line, int lg);
+void			projette_au_plan(t_point_plan *h, t_point a, int lg, int ht);
+t_point_plan	*fill_plan(t_point *line, int lg, int ht);
 t_point_plan	**plan_build(t_point **tab, int lg, int ht);
 void			traiteur(t_point_plan **p, t_point_plan c, t_data *data);
 void			trace_trait(t_point_plan xyc1, int x2, int y2, t_data *data);
@@ -97,6 +109,7 @@ void			trace_trait(t_point_plan xyc1, int x2, int y2, t_data *data);
 void			rotato_z(t_point **tab, double angle);
 void			rotato_x(t_point **tab, double angle);
 void			rotato_y(t_point **tab, double angle);
+int				rotate(int keycode, t_vars vars);
 
 // Outils pratiques
 
